@@ -10,10 +10,12 @@ class PresentsController < ApplicationController
   end
 
   def send_code
-    if params[:code].present?
-      redirect_to present_path(params[:code])
+    @present = Present.new(params[:code])
+    flash[:alert] = @present.message
+    if @present.message == Settings.message
+      redirect_to present_path(@present.code)
     else
-      redirect_to presents_path, alert: 'コードを入力してください'
+      redirect_to presents_path
     end
   end
 
