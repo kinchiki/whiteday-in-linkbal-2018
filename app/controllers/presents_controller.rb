@@ -6,13 +6,13 @@ class PresentsController < ApplicationController
   end
 
   def show
-    @url = Settings.starbucks[@key]
+    @url = Rails.application.secrets.urls[@key]
   end
 
   def send_code
     @present = Present.new(params[:code])
     flash[:alert] = @present.message
-    if @present.message == Settings.message
+    if @present.message == Rails.application.secrets.message
       redirect_to present_path(@present.code)
     else
       redirect_to presents_path

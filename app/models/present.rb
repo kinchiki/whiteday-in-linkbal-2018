@@ -9,10 +9,10 @@ class Present
     @message =
       if @code.blank?
         'コードを入力してください'
-      elsif Settings.starbucks[@code].blank?
+      elsif Rails.application.secrets.urls[@code].blank?
         'コードが間違っています'
       else
-        Settings.message
+        Rails.application.secrets.message
     end
   end
 
