@@ -5,7 +5,7 @@ class Present
   validates :code, presence: true
 
   def initialize(code)
-    @code = code
+    @code = code.to_sym
     @message =
       if @code.blank?
         'コードを入力してください'
