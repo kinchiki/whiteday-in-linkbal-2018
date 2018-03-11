@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'presents#index'
+  resources :presents, only: %i(index) do
+    post 'send_code', on: :collection
+  end
 end
