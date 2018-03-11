@@ -12,7 +12,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
 gem 'jbuilder', '~> 2.5'
 
-gem 'config'
 gem 'pg', group: :production
 
 group :development, :test do
